@@ -242,6 +242,7 @@ namespace WeActLCD.Driver
                 if (_serialPort.IsOpen) _serialPort.Close();
                 _serialPort.Dispose();
             }
+            GC.SuppressFinalize(this);
         }
     }
 }
