@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Driver\Driver.csproj" />
+    <Compile Remove="Resoruces\**" />
+    <EmbeddedResource Remove="Resoruces\**" />
+    <None Remove="Resoruces\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resoruces\" />
+    <ProjectReference Include="..\Driver\Driver.csproj" />
   </ItemGroup>
 
   <ItemGroup>
