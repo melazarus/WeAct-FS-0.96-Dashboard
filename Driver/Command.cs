@@ -28,10 +28,7 @@ namespace WeActLCD.Driver
 
         public static Command SetOrientation(DisplayOrientation orientation)
         {
-            if (orientation == DisplayOrientation.Landscape)
-                return new Command([(byte)CommandCode.CMD_SET_ORIENTATION, (byte)orientation, (byte)CommandCode.CMD_END]);
-            else
-                throw new NotImplementedException();
+            return new Command([(byte)CommandCode.CMD_SET_ORIENTATION, (byte)orientation, (byte)CommandCode.CMD_END]);
         }
 
         public static Command GetSystemVersion()

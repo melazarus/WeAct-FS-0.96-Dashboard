@@ -24,7 +24,7 @@ namespace WeActLCD.Driver
         private CancellationTokenSource _cts;
         private Task _portWriter;
 
-        public (int width, int height) Resolution { get; } = (160, 80);
+        public (int width, int height) Resolution { get; private set; } = (160, 80);
         //todo: getwidth get heigt based on orientation
         public string BusReportedDeviceName { get => "Display FS 0.96 Inch"; }
 
@@ -95,7 +95,12 @@ namespace WeActLCD.Driver
 
         public void SetOrientation(DisplayOrientation orientation)
         {
-            var command = Command.SetOrientation(orientation);
+            _currentOrientation = orientation;
+            if (_currentOrientation is DisplayOrientation.Landscape or DisplayOrientation.ReverseLandscape)
+                Resolution = (160, 80);
+            else
+                Resolution = (80, 1600);
+                var command = Command.SetOrientation(orientation);
             _command_queue.Add(command);
         }
 
